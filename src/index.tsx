@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// Delete me
-export const Thing = () => {
-  return <div>the snozzberries taste like snozzberries</div>;
-};
+export const sum = (a: number, b: number): number => a + b;
+
+export const Thing = () => <h1>I'm TK</h1>;
