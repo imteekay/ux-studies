@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-type Product = {
+export type Product = {
   name: string;
   price: number;
   description: string;
@@ -14,6 +14,49 @@ export type FetchAPIResponse = {
   isLoading: boolean;
   hasError: boolean;
   data: Data;
+};
+
+export enum FetchActionType {
+  FETCH_INIT = 'FETCH_INIT',
+  FETCH_SUCCESS = 'FETCH_SUCCESS',
+  FETCH_ERROR = 'FETCH_ERROR',
+}
+
+export type FetchAction = {
+  type:
+    | FetchActionType.FETCH_INIT
+    | FetchActionType.FETCH_SUCCESS
+    | FetchActionType.FETCH_ERROR;
+  payload: Data;
+};
+
+export const fetchReducer = (
+  state: FetchAPIResponse,
+  action: FetchAction
+): FetchAPIResponse => {
+  switch (action.type) {
+    case FetchActionType.FETCH_INIT:
+      return {
+        ...state,
+        isLoading: true,
+        hasError: false,
+      };
+    case FetchActionType.FETCH_SUCCESS:
+      return {
+        ...state,
+        hasError: false,
+        isLoading: false,
+        data: action.payload,
+      };
+    case FetchActionType.FETCH_ERROR:
+      return {
+        ...state,
+        hasError: true,
+        isLoading: false,
+      };
+    default:
+      return state;
+  }
 };
 
 export const useFetchAPI = async (
