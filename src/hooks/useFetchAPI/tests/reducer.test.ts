@@ -1,11 +1,6 @@
+import { Product } from 'types/Product';
 import { fetchReducer } from '../reducer';
-import {
-  Data,
-  FetchAPIResponse,
-  FetchAction,
-  FetchActionType,
-  Product,
-} from '../types';
+import { Data, FetchAPIResponse, FetchAction, FetchActionType } from '../types';
 
 describe('fetchReducer', () => {
   const initialData: Data = [];

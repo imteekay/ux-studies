@@ -1,4 +1,4 @@
-import { Product } from 'domain/types';
+import { Product } from 'types/Product';
 
 export type Data = Product[];
 export type FetchAPIResponse = {

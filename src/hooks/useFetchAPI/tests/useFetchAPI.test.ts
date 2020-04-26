@@ -2,8 +2,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
+import { Product } from 'types/Product';
 import { useFetchAPI } from '../useFetchAPI';
-import { Data, FetchAPIResponse, Product } from '../types';
+import { Data, FetchAPIResponse } from '../types';
 
 describe('useFetchAPI', () => {
   const mock: MockAdapter = new MockAdapter(axios);
