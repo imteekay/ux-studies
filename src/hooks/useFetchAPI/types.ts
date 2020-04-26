@@ -1,10 +1,4 @@
-export type Product = {
-  name: string;
-  price: number;
-  description: string;
-  isShippingFree: boolean;
-  discount: number;
-};
+import { Product } from 'domain/types';
 
 export type Data = Product[];
 export type FetchAPIResponse = {
