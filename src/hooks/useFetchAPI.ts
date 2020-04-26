@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 export type Product = {
@@ -13,7 +13,7 @@ export type Data = Product[];
 export type FetchAPIResponse = {
   isLoading: boolean;
   hasError: boolean;
-  data: Data;
+  data?: Data;
 };
 
 export enum FetchActionType {
@@ -27,7 +27,7 @@ export type FetchAction = {
     | FetchActionType.FETCH_INIT
     | FetchActionType.FETCH_SUCCESS
     | FetchActionType.FETCH_ERROR;
-  payload: Data;
+  payload?: Data;
 };
 
 export const fetchReducer = (
@@ -63,26 +63,32 @@ export const useFetchAPI = async (
   url: string,
   initialData: Data
 ): Promise<FetchAPIResponse> => {
-  const [data, setData] = useState<Data>(initialData);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [hasError, setHasError] = useState<boolean>(false);
+  const initialState: FetchAPIResponse = {
+    isLoading: false,
+    hasError: false,
+    data: initialData,
+  };
+
+  const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
     const fetchAPI = async () => {
-      setIsLoading(true);
+      dispatch({ type: FetchActionType.FETCH_INIT });
 
       try {
         const response = await axios.get(url);
-        setData(response.data);
-      } catch (error) {
-        setHasError(true);
-      }
 
-      setIsLoading(false);
+        dispatch({
+          type: FetchActionType.FETCH_SUCCESS,
+          payload: response.data,
+        });
+      } catch (error) {
+        dispatch({ type: FetchActionType.FETCH_ERROR });
+      }
     };
 
     fetchAPI();
   }, [url]);
 
-  return { isLoading, hasError, data };
+  return state;
 };
