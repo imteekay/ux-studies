@@ -30,11 +30,7 @@ describe('useFetchAPI', () => {
 
     await waitForNextUpdate();
 
-    const {
-      isLoading,
-      hasError,
-      data,
-    }: FetchAPIResponse = await result.current;
+    const { isLoading, hasError, data }: FetchAPIResponse = result.current;
 
     expect(isLoading).toEqual(false);
     expect(hasError).toEqual(false);
@@ -50,11 +46,7 @@ describe('useFetchAPI', () => {
 
     await waitForNextUpdate();
 
-    const {
-      isLoading,
-      hasError,
-      data,
-    }: FetchAPIResponse = await result.current;
+    const { isLoading, hasError, data }: FetchAPIResponse = result.current;
 
     expect(isLoading).toEqual(false);
     expect(hasError).toEqual(true);
@@ -70,11 +62,7 @@ describe('useFetchAPI', () => {
 
     await waitForNextUpdate();
 
-    const {
-      isLoading,
-      hasError,
-      data,
-    }: FetchAPIResponse = await result.current;
+    const { isLoading, hasError, data }: FetchAPIResponse = result.current;
 
     expect(isLoading).toEqual(false);
     expect(hasError).toEqual(true);

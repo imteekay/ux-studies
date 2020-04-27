@@ -9,6 +9,8 @@ export const Search = () => {
     []
   );
 
+  console.log(query, data);
+
   if (hasError) {
     return <h1>Error</h1>;
   }
