@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import { Search } from './containers/Search';
+
 export const App = () => (
   <Router>
     <nav>
@@ -16,7 +18,7 @@ export const App = () => (
 
     <Switch>
       <Route path="/search">
-        <h1>It's Search</h1>
+        <Search />
       </Route>
       <Route path="/">
         <h1>It's Home</h1>
