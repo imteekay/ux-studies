@@ -1,21 +1,26 @@
-import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Search } from './containers/Search';
+import { Menu } from './components/Menu';
+import { MenuItem } from './types/MenuItem';
+
+const menuItems: MenuItem[] = [
+  {
+    linkTo: '/',
+    label: 'Home',
+    key: 'link-to-home',
+  },
+  {
+    linkTo: '/search',
+    label: 'Search',
+    key: 'link-to-search',
+  },
+];
 
 export const App = () => (
   <Router>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/search">Search</Link>
-        </li>
-      </ul>
-    </nav>
-
+    <Menu menuItems={menuItems} />
     <Switch>
       <Route path="/search">
         <Search />
