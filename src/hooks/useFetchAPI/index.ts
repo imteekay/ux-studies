@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Data, FetchAPIResponse, FetchActionType } from './types';
 import { fetchReducer } from './reducer';
 
-export const useFetchAPI = async (
+export const useFetchAPI = (
   url: string,
   initialData: Data
-): Promise<FetchAPIResponse> => {
+): FetchAPIResponse => {
   const initialState: FetchAPIResponse = {
     isLoading: false,
     hasError: false,
