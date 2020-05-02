@@ -3,6 +3,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import Typography from '@material-ui/core/Typography';
 
 import { ProductType } from 'types/Product';
+import { descriptionStyle, descriptionSkeletonStyle } from './styles';
 
 type TitleDescriptionType = Pick<ProductType, 'name' | 'description'>;
 type TitleDescriptionPropsType = TitleDescriptionType & {
@@ -17,8 +18,8 @@ export const TitleDescription = ({
   if (isLoading) {
     return (
       <Fragment>
-        <Skeleton width="60%" />
-        <Skeleton />
+        <Skeleton width="60%" height="24px" />
+        <Skeleton style={descriptionSkeletonStyle} height="20px" />
       </Fragment>
     );
   }
@@ -26,7 +27,11 @@ export const TitleDescription = ({
   return (
     <Fragment>
       <Typography>{name}</Typography>
-      <Typography color="textSecondary" variant="body2">
+      <Typography
+        color="textSecondary"
+        variant="body2"
+        style={descriptionStyle}
+      >
         {description}
       </Typography>
     </Fragment>

@@ -8,7 +8,7 @@ type TagProps = {
 export const Tag = ({ label, isVisible }: TagProps) => {
   if (!isVisible) return null;
 
-  return <span>{label}</span>;
+  return <div>{label}</div>;
 };
 
 Tag.defaultProps = {
