@@ -3,6 +3,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
 import { imageWrapperStyle, imageStyle } from './styles';
+import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
 type ImageUrlType = Pick<ProductType, 'imageUrl'>;
 type ImageAttrType = { imageAlt: string; width?: string };
@@ -25,6 +26,12 @@ export const Image = ({
   imageWrapperStyle,
   imageStyle,
 }: ImagePropsType) => {
+  const {
+    handleImageOnLoad,
+    imageVisibility,
+    imageOpactity,
+  }: ImageOnLoadType = useImageOnLoad();
+
   if (isLoading) {
     return (
       <Skeleton
@@ -37,7 +44,19 @@ export const Image = ({
 
   return (
     <div style={imageWrapperStyle}>
-      <img src={imageUrl} alt={imageAlt} width={width} style={imageStyle} />
+      <img
+        src={imageUrl}
+        alt={imageAlt}
+        width={width}
+        style={{ ...imageStyle, ...imageVisibility }}
+      />
+      <img
+        onLoad={handleImageOnLoad}
+        src={imageUrl}
+        alt={imageAlt}
+        width={width}
+        style={{ ...imageStyle, ...imageOpactity }}
+      />
     </div>
   );
 };
