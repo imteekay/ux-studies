@@ -7,6 +7,10 @@ import Tag from '../Tag';
 import TitleDescription from './TitleDescription';
 import Price from './Price';
 
+type ProductPropsType = ProductType & {
+  isLoading: boolean;
+};
+
 export const Product = ({
   imageUrl,
   name,
@@ -14,9 +18,10 @@ export const Product = ({
   price,
   discount,
   isShippingFree,
-}: ProductType) => (
+  isLoading,
+}: ProductPropsType) => (
   <Box>
-    <Image imageUrl={imageUrl} imageAlt={name} />
+    <Image imageUrl={imageUrl} imageAlt={name} isLoading={isLoading} />
     <TitleDescription name={name} description={description} />
     <Price price={price} discount={discount} />
     <Tag label="Free Shipping" isVisible={isShippingFree} />
