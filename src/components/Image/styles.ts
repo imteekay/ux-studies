@@ -5,6 +5,7 @@ export const imageWrapperStyle: CSSProperties = {
   overflow: 'hidden',
   height: 170,
   borderRadius: '8px',
+  marginBottom: '8px',
 };
 
 export const imageStyle: CSSProperties = {
@@ -12,4 +13,9 @@ export const imageStyle: CSSProperties = {
   height: '100%',
   objectFit: 'cover',
   borderRadius: '8px',
+};
+
+export const skeletonStyle: CSSProperties = {
+  borderRadius: '8px',
+  marginBottom: '8px',
 };

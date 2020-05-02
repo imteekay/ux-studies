@@ -19,4 +19,40 @@ export const fakeData: ProductType[] = [
     discount: 50,
     isShippingFree: true,
   },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+    name: 'Rino',
+    description: 'Some description here',
+    price: 70,
+    discount: 50,
+    isShippingFree: true,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Rino',
+    description: 'Some description here',
+    price: 70,
+    discount: 50,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Rino',
+    description: 'Some description here',
+    price: 70,
+    discount: 50,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+    name: 'Rino',
+    description: 'Some description here',
+    price: 70,
+    discount: 50,
+    isShippingFree: true,
+  },
 ];

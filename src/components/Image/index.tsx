@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
-import { imageWrapperStyle, imageStyle } from './styles';
+import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
 type ImageUrlType = Pick<ProductType, 'imageUrl'>;
@@ -38,6 +38,7 @@ export const Image = ({
         variant="rect"
         width={width}
         height={imageWrapperStyle.height}
+        style={skeletonStyle}
       />
     );
   }

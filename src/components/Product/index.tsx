@@ -22,7 +22,11 @@ export const Product = ({
 }: ProductPropsType) => (
   <Box>
     <Image imageUrl={imageUrl} imageAlt={name} isLoading={isLoading} />
-    <TitleDescription name={name} description={description} />
+    <TitleDescription
+      name={name}
+      description={description}
+      isLoading={isLoading}
+    />
     <Price price={price} discount={discount} />
     <Tag label="Free Shipping" isVisible={isShippingFree} />
   </Box>
