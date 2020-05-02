@@ -1,18 +1,27 @@
 import React, { Fragment } from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { Typography } from '@material-ui/core';
 
 import { ProductType } from 'types/Product';
+import { PriceWithDiscount } from './PriceWithDiscount';
+import { OriginalPrice } from './OriginalPrice';
+import { Discount } from './Discount';
 
 type PriceType = Pick<ProductType, 'price' | 'discount'>;
 type PricePropsType = PriceType & {
   isLoading: boolean;
 };
 
+type PriceInfoType = {
+  priceWithDiscount: string;
+  originalPrice: string;
+  discountOff: string;
+  hasDiscount: boolean;
+};
+
 const applyDiscount = (price: number, discount: number): number =>
   (price * discount) / 100;
 
-const getPriceInfo = (price: number, discount: number) => {
+const getPriceInfo = (price: number, discount: number): PriceInfoType => {
   const hasDiscount: boolean = Boolean(discount);
   const priceWithDiscount: string = hasDiscount
     ? `$${applyDiscount(price, discount)}`
@@ -29,14 +38,6 @@ const getPriceInfo = (price: number, discount: number) => {
   };
 };
 
-const originalPriceStyle = {
-  marginRight: '8px',
-};
-
-const priceWithDiscountStyle = {
-  marginRight: '8px',
-};
-
 export const Price = ({ price, discount, isLoading }: PricePropsType) => {
   if (isLoading) {
     return <Skeleton width="80%" height="18px" />;
@@ -47,29 +48,13 @@ export const Price = ({ price, discount, isLoading }: PricePropsType) => {
     originalPrice,
     discountOff,
     hasDiscount,
-  } = getPriceInfo(price, discount);
+  }: PriceInfoType = getPriceInfo(price, discount);
 
   return (
     <Fragment>
-      <Typography display="inline" style={priceWithDiscountStyle}>
-        {priceWithDiscount}
-      </Typography>
-
-      {hasDiscount && (
-        <Typography
-          display="inline"
-          style={originalPriceStyle}
-          color="textSecondary"
-        >
-          {originalPrice}
-        </Typography>
-      )}
-
-      {hasDiscount && (
-        <Typography display="inline" color="secondary">
-          {discountOff}
-        </Typography>
-      )}
+      <PriceWithDiscount price={priceWithDiscount} />
+      <OriginalPrice hasDiscount={hasDiscount} price={originalPrice} />
+      <Discount hasDiscount={hasDiscount} discountOff={discountOff} />
     </Fragment>
   );
 };

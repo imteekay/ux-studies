@@ -13,9 +13,14 @@ export const ProductList = ({ products, isLoading }: ProductListPropsType) => {
   return (
     <Grid container spacing={3}>
       {products.map(product => (
-        <Grid item xs={6} sm={3}>
+        <Grid
+          item
+          xs={6}
+          sm={3}
+          key={`grid-${product.name}-${product.description}-${product.price}`}
+        >
           <Product
-            key={`${product.name}-${product.description}-${product.price}`}
+            key={`product-${product.name}-${product.description}-${product.price}`}
             imageUrl={product.imageUrl}
             name={product.name}
             description={product.description}
