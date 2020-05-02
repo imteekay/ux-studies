@@ -28,7 +28,11 @@ export const Product = ({
       isLoading={isLoading}
     />
     <Price price={price} discount={discount} isLoading={isLoading} />
-    <Tag label="Free Shipping" isVisible={isShippingFree} />
+    <Tag
+      label="Free Shipping"
+      isVisible={isShippingFree}
+      isLoading={isLoading}
+    />
   </Box>
 );
 
