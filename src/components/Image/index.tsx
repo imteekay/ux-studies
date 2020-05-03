@@ -1,7 +1,8 @@
-import React, { CSSProperties } from 'react';
+import React, { memo, useRef, useState, CSSProperties, Fragment } from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
@@ -26,38 +27,54 @@ export const Image = ({
   imageWrapperStyle,
   imageStyle,
 }: ImagePropsType) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  const onIntersection = (
+    [entry]: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    setIsIntersecting(entry.isIntersecting);
+
+    if (ref.current != null && entry.isIntersecting) {
+      observer.unobserve(ref.current);
+    }
+  };
+
+  useIntersectionObserver(ref.current, onIntersection);
+
   const {
     handleImageOnLoad,
     imageVisibility,
     imageOpactity,
   }: ImageOnLoadType = useImageOnLoad();
 
-  if (isLoading) {
-    return (
-      <Skeleton
-        variant="rect"
-        width={width}
-        height={imageWrapperStyle.height}
-        style={skeletonStyle}
-      />
-    );
-  }
-
   return (
-    <div style={imageWrapperStyle}>
-      <img
-        src={imageUrl}
-        alt={imageAlt}
-        width={width}
-        style={{ ...imageStyle, ...imageVisibility }}
-      />
-      <img
-        onLoad={handleImageOnLoad}
-        src={imageUrl}
-        alt={imageAlt}
-        width={width}
-        style={{ ...imageStyle, ...imageOpactity }}
-      />
+    <div ref={ref} style={imageWrapperStyle}>
+      {isLoading || !isIntersecting ? (
+        <Skeleton
+          variant="rect"
+          width={width}
+          height={imageWrapperStyle.height}
+          style={skeletonStyle}
+        />
+      ) : (
+        <Fragment>
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            width={width}
+            style={{ ...imageStyle, ...imageVisibility }}
+          />
+          <img
+            onLoad={handleImageOnLoad}
+            src={imageUrl}
+            alt={imageAlt}
+            width={width}
+            style={{ ...imageStyle, ...imageOpactity }}
+          />
+        </Fragment>
+      )}
     </div>
   );
 };
@@ -68,4 +85,4 @@ Image.defaultProps = {
   imageStyle,
 };
 
-export default Image;
+export default memo(Image);
