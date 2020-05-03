@@ -55,4 +55,40 @@ export const fakeData: ProductType[] = [
     discount: 0,
     isShippingFree: true,
   },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1542210940661-5f91cb7afe02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Osaka',
+    description: 'Some description here',
+    price: 45,
+    discount: 0,
+    isShippingFree: true,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1537153960513-344d9f2e8216?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Osaka Streets',
+    description: 'Some description here',
+    price: 30,
+    discount: 50,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1539960715911-a0ee71c887a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Osaka City',
+    description: 'Some description here',
+    price: 90,
+    discount: 30,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1572166581340-927c26fc8f96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Osaka Japon',
+    description: 'Some description here',
+    price: 70,
+    discount: 0,
+    isShippingFree: true,
+  },
 ];
