@@ -91,4 +91,58 @@ export const fakeData: ProductType[] = [
     discount: 0,
     isShippingFree: true,
   },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Kyoto Tower View',
+    description: 'Some description here',
+    price: 90,
+    discount: 30,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1558862107-d49ef2a04d72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Big Kyoto City',
+    description: 'Some description here',
+    price: 70,
+    discount: 0,
+    isShippingFree: true,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1522623349500-de37a56ea2a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Kyoto',
+    description: 'Some description here',
+    price: 45,
+    discount: 0,
+    isShippingFree: true,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Kyoto Streets',
+    description: 'Some description here',
+    price: 30,
+    discount: 50,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Kyoto City',
+    description: 'Some description here',
+    price: 90,
+    discount: 30,
+    isShippingFree: false,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+    name: 'Kyoto Japon',
+    description: 'Some description here',
+    price: 70,
+    discount: 0,
+    isShippingFree: true,
+  },
 ];
