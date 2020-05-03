@@ -1,4 +1,4 @@
-import { Product } from 'types/Product';
+import { ProductType } from 'types/Product';
 import { fetchReducer } from '../reducer';
 import { Data, FetchAPIResponse, FetchAction, FetchActionType } from '../types';
 
@@ -27,9 +27,10 @@ describe('fetchReducer', () => {
 
   describe('when dispatch FETCH_SUCCESS action', () => {
     it('returns the the API data', () => {
-      const product: Product = {
+      const product: ProductType = {
         name: 'iPhone',
         price: 3500,
+        imageUrl: 'image-url.png',
         description: 'Apple mobile phone',
         isShippingFree: true,
         discount: 0,

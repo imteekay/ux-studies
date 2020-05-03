@@ -1,6 +1,6 @@
-import { Product } from 'types/Product';
+import { ProductType } from 'types/Product';
 
-export type Data = Product[];
+export type Data = ProductType[];
 export type FetchAPIResponse = {
   isLoading: boolean;
   hasError: boolean;

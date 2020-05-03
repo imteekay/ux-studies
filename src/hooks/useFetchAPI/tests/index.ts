@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-import { Product } from 'types/Product';
+import { ProductType } from 'types/Product';
 import { useFetchAPI } from '../index';
 import { Data, FetchAPIResponse } from '../types';
 
@@ -12,9 +12,10 @@ describe('useFetchAPI', () => {
   const initialData: Data = [];
 
   it('gets and updates data from the api request', async () => {
-    const product: Product = {
+    const product: ProductType = {
       name: 'iPhone',
       price: 3500,
+      imageUrl: 'image-url.png',
       description: 'Apple mobile phone',
       isShippingFree: true,
       discount: 0,
