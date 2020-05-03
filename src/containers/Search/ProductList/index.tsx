@@ -16,7 +16,7 @@ export const ProductList = ({ products, isLoading }: ProductListPropsType) => {
         <Grid
           item
           xs={6}
-          sm={3}
+          md={3}
           key={`grid-${product.name}-${product.description}-${product.price}`}
         >
           <Product
