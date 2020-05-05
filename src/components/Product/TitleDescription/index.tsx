@@ -18,16 +18,25 @@ export const TitleDescription = ({
   if (isLoading) {
     return (
       <Fragment>
-        <Skeleton width="60%" height="24px" />
-        <Skeleton style={descriptionSkeletonStyle} height="20px" />
+        <Skeleton
+          width="60%"
+          height="24px"
+          data-testid="name-skeleton-loader"
+        />
+        <Skeleton
+          style={descriptionSkeletonStyle}
+          height="20px"
+          data-testid="description-skeleton-loader"
+        />
       </Fragment>
     );
   }
 
   return (
     <Fragment>
-      <Typography>{name}</Typography>
+      <Typography data-testid="product-name">{name}</Typography>
       <Typography
+        data-testid="product-description"
         color="textSecondary"
         variant="body2"
         style={descriptionStyle}
