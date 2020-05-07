@@ -5,7 +5,7 @@ import { fetchReducer } from './reducer';
 
 export const useFetchAPI = (
   url: string,
-  initialData: Data
+  initialData: Data = []
 ): FetchAPIResponse => {
   const initialState: FetchAPIResponse = {
     isLoading: false,
@@ -36,3 +36,5 @@ export const useFetchAPI = (
 
   return state;
 };
+
+export { FetchAPIResponse };
