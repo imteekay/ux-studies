@@ -5,15 +5,15 @@ import { Image, ImagePropsType } from '../index';
 
 type ImageType = Pick<ImagePropsType, 'imageUrl' | 'imageAlt' | 'isLoading'>;
 
-describe('Product', () => {
+describe('Image', () => {
   const imageProps: ImageType = {
     imageUrl: 'url.com.br',
     imageAlt: 'the image alt',
     isLoading: false,
   };
 
-  describe('when the product has no discount', () => {
-    it('shows the product skeleton', () => {
+  describe('when the image is loading', () => {
+    it('shows the image skeleton', () => {
       const { queryByTestId } = render(<Image {...imageProps} isLoading />);
 
       expect(queryByTestId('image-skeleton-loader')).toBeInTheDocument();
