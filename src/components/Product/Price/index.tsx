@@ -14,7 +14,7 @@ type PricePropsType = PriceType & {
 
 export const Price = ({ price, discount, isLoading }: PricePropsType) => {
   if (isLoading) {
-    return <Skeleton width="80%" height="18px" />;
+    return <Skeleton width="80%" height="18px" data-testid="skeleton-loader" />;
   }
 
   const {
