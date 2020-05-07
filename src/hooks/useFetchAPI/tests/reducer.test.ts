@@ -1,10 +1,10 @@
 import { ProductType } from 'types/Product';
 import { fetchReducer } from '../reducer';
-import { Data, FetchAPIResponse, FetchAction, FetchActionType } from '../types';
+import { Data, State, FetchAction, FetchActionType } from '../types';
 
 describe('fetchReducer', () => {
   const initialData: Data = [];
-  const initialState: FetchAPIResponse = {
+  const initialState: State = {
     isLoading: false,
     hasError: false,
     data: initialData,
@@ -14,7 +14,6 @@ describe('fetchReducer', () => {
     it('returns the isLoading as true without any error', () => {
       const action: FetchAction = {
         type: FetchActionType.FETCH_INIT,
-        payload: [],
       };
 
       expect(fetchReducer(initialState, action)).toEqual({
@@ -53,7 +52,6 @@ describe('fetchReducer', () => {
     it('returns the isLoading as true without any error', () => {
       const action: FetchAction = {
         type: FetchActionType.FETCH_ERROR,
-        payload: [],
       };
 
       expect(fetchReducer(initialState, action)).toEqual({

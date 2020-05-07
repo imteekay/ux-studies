@@ -8,12 +8,6 @@ export type State = {
   data: Data;
 };
 
-export type FetchAPIResponse = {
-  isLoading: boolean;
-  hasError: boolean;
-  data?: Data;
-};
-
 export enum FetchActionType {
   FETCH_INIT = 'FETCH_INIT',
   FETCH_SUCCESS = 'FETCH_SUCCESS',

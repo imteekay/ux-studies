@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import { State, Data, FetchAPIResponse, FetchActionType } from './types';
+import { State, Data, FetchActionType } from './types';
 import { fetchReducer } from './reducer';
 
 export const useFetchAPI = (url: string, initialData: Data = []): State => {
@@ -33,5 +33,3 @@ export const useFetchAPI = (url: string, initialData: Data = []): State => {
 
   return state;
 };
-
-export { FetchAPIResponse };
