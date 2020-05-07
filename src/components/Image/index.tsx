@@ -14,7 +14,7 @@ type ImageStyleType = {
   imageStyle: CSSProperties;
 };
 
-type ImagePropsType = ImageUrlType &
+export type ImagePropsType = ImageUrlType &
   ImageAttrType &
   ImageStateType &
   ImageStyleType;
@@ -29,6 +29,7 @@ export const Image = ({
 }: ImagePropsType) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const showImageSkeleton: boolean = isLoading || !isIntersecting;
 
   const onIntersection = (
     [entry]: IntersectionObserverEntry[],
@@ -51,7 +52,7 @@ export const Image = ({
 
   return (
     <div ref={ref} style={imageWrapperStyle}>
-      {isLoading || !isIntersecting ? (
+      {showImageSkeleton ? (
         <Skeleton
           variant="rect"
           width={width}
