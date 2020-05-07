@@ -1,6 +1,13 @@
 import { ProductType } from 'types/Product';
 
 export type Data = ProductType[];
+
+export type State = {
+  isLoading: boolean;
+  hasError: boolean;
+  data: Data;
+};
+
 export type FetchAPIResponse = {
   isLoading: boolean;
   hasError: boolean;
@@ -13,10 +20,20 @@ export enum FetchActionType {
   FETCH_ERROR = 'FETCH_ERROR',
 }
 
-export type FetchAction = {
-  type:
-    | FetchActionType.FETCH_INIT
-    | FetchActionType.FETCH_SUCCESS
-    | FetchActionType.FETCH_ERROR;
-  payload?: Data;
+type FetchInitAction = {
+  type: FetchActionType.FETCH_INIT;
 };
+
+type FetchSuccessAction = {
+  type: FetchActionType.FETCH_SUCCESS;
+  payload: Data;
+};
+
+type FetchErrorAction = {
+  type: FetchActionType.FETCH_ERROR;
+};
+
+export type FetchAction =
+  | FetchInitAction
+  | FetchSuccessAction
+  | FetchErrorAction;

@@ -1,13 +1,20 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import { State, Data, FetchAPIResponse, FetchActionType } from './types';
-import { fetchReducer } from './reducer';
 
-export const useFetchAPI = (url: string, initialData: Data = []): State => {
+import { State, FetchActionType } from './types';
+import { fetchReducer } from './reducer';
+import { fakeData } from './fakeData';
+
+const fetchProducts = async () => {
+  await axios.get('google.com');
+  return fakeData;
+};
+
+export const useProductFetchAPI = (): State => {
   const initialState: State = {
     isLoading: false,
     hasError: false,
-    data: initialData,
+    data: fakeData,
   };
 
   const [state, dispatch] = useReducer(fetchReducer, initialState);
@@ -17,11 +24,11 @@ export const useFetchAPI = (url: string, initialData: Data = []): State => {
       dispatch({ type: FetchActionType.FETCH_INIT });
 
       try {
-        const response = await axios.get(url);
+        const payload = await fetchProducts();
 
         dispatch({
           type: FetchActionType.FETCH_SUCCESS,
-          payload: response.data,
+          payload,
         });
       } catch (error) {
         dispatch({ type: FetchActionType.FETCH_ERROR });
@@ -29,9 +36,9 @@ export const useFetchAPI = (url: string, initialData: Data = []): State => {
     };
 
     fetchAPI();
-  }, [url]);
+  }, []);
 
   return state;
 };
 
-export { FetchAPIResponse };
+export { State };
