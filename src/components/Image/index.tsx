@@ -57,6 +57,7 @@ export const Image = ({
           width={width}
           height={imageWrapperStyle.height}
           style={skeletonStyle}
+          data-testid="image-skeleton-loader"
         />
       ) : (
         <Fragment>

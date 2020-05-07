@@ -19,7 +19,7 @@ describe('Price', () => {
         <Price price={100} discount={20} isLoading />
       );
 
-      expect(queryByTestId('skeleton-loader')).toBeInTheDocument();
+      expect(queryByTestId('price-skeleton-loader')).toBeInTheDocument();
     });
   });
 

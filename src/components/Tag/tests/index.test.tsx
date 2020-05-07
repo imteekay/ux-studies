@@ -20,7 +20,7 @@ describe('Tag', () => {
         <Tag label="a label" isVisible isLoading />
       );
 
-      expect(queryByTestId('skeleton-loader')).toBeInTheDocument();
+      expect(queryByTestId('tag-skeleton-loader')).toBeInTheDocument();
     });
   });
 

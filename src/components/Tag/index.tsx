@@ -14,7 +14,7 @@ export const Tag = ({ label, isVisible, isLoading }: TagProps) => {
   if (!isVisible) return null;
   if (isLoading) {
     return (
-      <Skeleton width="110px" height="40px" data-testid="skeleton-loader" />
+      <Skeleton width="110px" height="40px" data-testid="tag-skeleton-loader" />
     );
   }
 
