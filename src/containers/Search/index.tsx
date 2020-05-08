@@ -1,21 +1,14 @@
 import React from 'react';
-import { useQuery } from '../../hooks/useQuery';
-import { useFetchAPI } from '../../hooks/useFetchAPI';
-import { fakeData } from './fakeData';
+import { State } from '../../hooks/useFetchAPI/types';
+import { useProductFetchAPI } from '../../hooks/useFetchAPI/useProductFetchAPI';
 import { ProductList } from './ProductList';
 
 export const Search = () => {
-  const query = useQuery();
-  const { isLoading, hasError, data } = useFetchAPI(
-    'https://pokeapi.co/api/v2/pokemon/ditto/',
-    []
-  );
-
-  console.log(query, data);
+  const { isLoading, hasError, data }: State = useProductFetchAPI();
 
   if (hasError) {
-    return <h1>Error</h1>;
+    return <h2>Error</h2>;
   }
 
-  return <ProductList products={fakeData} isLoading={isLoading} />;
+  return <ProductList products={data} isLoading={isLoading} />;
 };

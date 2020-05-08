@@ -4,7 +4,7 @@ import MockAdapter from 'axios-mock-adapter';
 
 import { ProductType } from 'types/Product';
 import { useFetchAPI } from '../index';
-import { Data, FetchAPIResponse } from '../types';
+import { Data, State } from '../types';
 
 describe('useFetchAPI', () => {
   const mock: MockAdapter = new MockAdapter(axios);
@@ -31,7 +31,7 @@ describe('useFetchAPI', () => {
 
     await waitForNextUpdate();
 
-    const { isLoading, hasError, data }: FetchAPIResponse = result.current;
+    const { isLoading, hasError, data }: State = result.current;
 
     expect(isLoading).toEqual(false);
     expect(hasError).toEqual(false);
@@ -47,7 +47,7 @@ describe('useFetchAPI', () => {
 
     await waitForNextUpdate();
 
-    const { isLoading, hasError, data }: FetchAPIResponse = result.current;
+    const { isLoading, hasError, data }: State = result.current;
 
     expect(isLoading).toEqual(false);
     expect(hasError).toEqual(true);
@@ -63,7 +63,7 @@ describe('useFetchAPI', () => {
 
     await waitForNextUpdate();
 
-    const { isLoading, hasError, data }: FetchAPIResponse = result.current;
+    const { isLoading, hasError, data }: State = result.current;
 
     expect(isLoading).toEqual(false);
     expect(hasError).toEqual(true);

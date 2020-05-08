@@ -1,9 +1,6 @@
-import { FetchAPIResponse, FetchActionType, FetchAction } from './types';
+import { State, FetchActionType, FetchAction } from './types';
 
-export const fetchReducer = (
-  state: FetchAPIResponse,
-  action: FetchAction
-): FetchAPIResponse => {
+export const fetchReducer = (state: State, action: FetchAction): State => {
   switch (action.type) {
     case FetchActionType.FETCH_INIT:
       return {
