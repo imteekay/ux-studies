@@ -12,10 +12,14 @@ type TagProps = {
 
 export const Tag = ({ label, isVisible, isLoading }: TagProps) => {
   if (!isVisible) return null;
-  if (isLoading) return <Skeleton width="110px" height="40px" />;
+  if (isLoading) {
+    return (
+      <Skeleton width="110px" height="40px" data-testid="tag-skeleton-loader" />
+    );
+  }
 
   return (
-    <Box mt={1}>
+    <Box mt={1} data-testid="tag-label-wrapper">
       <span style={tabStyle}>{label}</span>
     </Box>
   );

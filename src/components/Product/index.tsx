@@ -7,7 +7,7 @@ import Tag from '../Tag';
 import TitleDescription from './TitleDescription';
 import Price from './Price';
 
-type ProductPropsType = ProductType & {
+export type ProductPropsType = ProductType & {
   isLoading: boolean;
 };
 

@@ -9,28 +9,26 @@ type ProductListPropsType = {
   isLoading: boolean;
 };
 
-export const ProductList = ({ products, isLoading }: ProductListPropsType) => {
-  return (
-    <Grid container spacing={3}>
-      {products.map(product => (
-        <Grid
-          item
-          xs={6}
-          md={3}
-          key={`grid-${product.name}-${product.description}-${product.price}`}
-        >
-          <Product
-            key={`product-${product.name}-${product.description}-${product.price}`}
-            imageUrl={product.imageUrl}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-            discount={product.discount}
-            isShippingFree={product.isShippingFree}
-            isLoading={isLoading}
-          />
-        </Grid>
-      ))}
-    </Grid>
-  );
-};
+export const ProductList = ({ products, isLoading }: ProductListPropsType) => (
+  <Grid container spacing={3}>
+    {products.map(product => (
+      <Grid
+        item
+        xs={6}
+        md={3}
+        key={`grid-${product.name}-${product.description}-${product.price}`}
+      >
+        <Product
+          key={`product-${product.name}-${product.description}-${product.price}`}
+          imageUrl={product.imageUrl}
+          name={product.name}
+          description={product.description}
+          price={product.price}
+          discount={product.discount}
+          isShippingFree={product.isShippingFree}
+          isLoading={isLoading}
+        />
+      </Grid>
+    ))}
+  </Grid>
+);

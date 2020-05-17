@@ -12,7 +12,11 @@ export const Discount = ({ hasDiscount, discountOff }: DiscountPropsType) => {
   }
 
   return (
-    <Typography display="inline" color="secondary">
+    <Typography
+      display="inline"
+      color="secondary"
+      data-testid="discount-off-label"
+    >
       {discountOff}
     </Typography>
   );
