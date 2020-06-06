@@ -25,7 +25,7 @@ export const fakeData: ProductType[] = [
     name: 'Tokyo Tower',
     description: 'Some description here',
     price: 45,
-    discount: 0,
+    discount: 20,
     isShippingFree: true,
   },
   {

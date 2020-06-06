@@ -1,14 +1,10 @@
 import { useEffect, useReducer } from 'react';
-import axios from 'axios';
 
 import { State, FetchActionType } from './types';
 import { fetchReducer } from './reducer';
 import { fakeData } from './fakeData';
 
-const fetchProducts = async () => {
-  await axios.get('google.com');
-  return fakeData;
-};
+const fetchProducts = async () => fakeData;
 
 export const useProductFetchAPI = (): State => {
   const initialState: State = {

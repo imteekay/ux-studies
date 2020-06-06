@@ -6,7 +6,9 @@ import MuiMenuItem from '@material-ui/core/MenuItem';
 
 import { MenuItem } from '../../types/MenuItem';
 
-export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
+type MenuPropsType = { menuItems: MenuItem[] };
+
+export const Menu = ({ menuItems }: MenuPropsType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
