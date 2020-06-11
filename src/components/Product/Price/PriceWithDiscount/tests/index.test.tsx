@@ -6,12 +6,24 @@ import { PriceWithDiscount } from '../index';
 describe('PriceWithDiscount', () => {
   it('shows the price', () => {
     const price = '$200';
-    render(<PriceWithDiscount price={price} />);
+    render(<PriceWithDiscount hasDiscount price={price} />);
     expect(screen.getByText(price)).toBeInTheDocument();
   });
 
+  describe('when the product has no discount', () => {
+    it('shows nothing', () => {
+      const { queryByTestId } = render(
+        <PriceWithDiscount hasDiscount={false} price="" />
+      );
+
+      expect(queryByTestId('discount-off-label')).not.toBeInTheDocument();
+    });
+  });
+
   it('has no accessibility violations', async () => {
-    const { container } = render(<PriceWithDiscount price="$200" />);
+    const { container } = render(
+      <PriceWithDiscount hasDiscount price="$200" />
+    );
 
     const results = await axe(container);
 
