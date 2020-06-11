@@ -4,18 +4,10 @@ import { Typography } from '@material-ui/core';
 import { originalPriceStyle } from '../styles';
 
 type OriginalPricePropsType = {
-  hasDiscount: boolean;
   price: string;
 };
 
-export const OriginalPrice = ({
-  hasDiscount,
-  price,
-}: OriginalPricePropsType) => {
-  if (!hasDiscount) {
-    return null;
-  }
-
+export const OriginalPrice = ({ price }: OriginalPricePropsType) => {
   return (
     <Typography
       display="inline"

@@ -28,8 +28,8 @@ export const Price = ({ price, discount, isLoading }: PricePropsType) => {
 
   return (
     <Fragment>
-      <PriceWithDiscount price={priceWithDiscount} />
-      <OriginalPrice hasDiscount={hasDiscount} price={originalPrice} />
+      <PriceWithDiscount price={priceWithDiscount} hasDiscount={hasDiscount} />
+      <OriginalPrice price={originalPrice} />
       <Discount hasDiscount={hasDiscount} discountOff={discountOff} />
     </Fragment>
   );
