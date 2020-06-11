@@ -4,10 +4,12 @@ import { axe } from 'jest-axe';
 import { PriceWithDiscount } from '../index';
 
 describe('PriceWithDiscount', () => {
-  it('shows the price', () => {
-    const price = '$200';
-    render(<PriceWithDiscount hasDiscount price={price} />);
-    expect(screen.getByText(price)).toBeInTheDocument();
+  describe('when the product has a discount', () => {
+    it('shows the price', () => {
+      const price = '$200';
+      render(<PriceWithDiscount hasDiscount price={price} />);
+      expect(screen.getByText(price)).toBeInTheDocument();
+    });
   });
 
   describe('when the product has no discount', () => {

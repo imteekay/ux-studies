@@ -7,16 +7,10 @@ type OriginalPricePropsType = {
   price: string;
 };
 
-export const OriginalPrice = ({ price }: OriginalPricePropsType) => {
-  return (
-    <Typography
-      display="inline"
-      style={originalPriceStyle}
-      color="textSecondary"
-    >
-      {price}
-    </Typography>
-  );
-};
+export const OriginalPrice = ({ price }: OriginalPricePropsType) => (
+  <Typography display="inline" style={originalPriceStyle} color="textSecondary">
+    {price}
+  </Typography>
+);
 
 export default OriginalPrice;
