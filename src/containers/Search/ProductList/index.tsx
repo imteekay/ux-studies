@@ -37,6 +37,7 @@ export const ProductList = ({ products, isLoading }: ProductListPropsType) => {
           <Product
             key={`product-${product.name}-${product.description}-${product.price}`}
             imageUrl={product.imageUrl}
+            thumbUrl={product.thumbUrl}
             name={product.name}
             description={product.description}
             price={product.price}

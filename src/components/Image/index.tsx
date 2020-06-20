@@ -15,7 +15,7 @@ import {
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
-type ImageUrlType = Pick<ProductType, 'imageUrl'>;
+type ImageUrlType = Pick<ProductType, 'imageUrl', 'thumbUrl'>;
 type ImageAttrType = { imageAlt: string; width: string };
 type ImageStateType = { isLoading: boolean };
 type ImageStyleType = {
@@ -30,6 +30,7 @@ export type ImagePropsType = ImageUrlType &
 
 export const Image = ({
   imageUrl,
+  thumbUrl,
   imageAlt,
   width,
   isLoading,
@@ -66,7 +67,7 @@ export const Image = ({
       ) : (
         <Fragment>
           <img
-            src={imageUrl}
+            src={thumbUrl}
             alt={imageAlt}
             width={width}
             style={{ ...imageStyle, ...imageVisibility }}
