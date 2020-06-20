@@ -1,4 +1,10 @@
-import React, { memo, useRef, useState, CSSProperties, Fragment } from 'react';
+import React, {
+  memo,
+  useCallback,
+  useState,
+  CSSProperties,
+  Fragment,
+} from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
@@ -7,7 +13,7 @@ import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
 type ImageUrlType = Pick<ProductType, 'imageUrl'>;
-type ImageAttrType = { imageAlt: string; width?: string };
+type ImageAttrType = { imageAlt: string; width: string };
 type ImageStateType = { isLoading: boolean };
 type ImageStyleType = {
   imageWrapperStyle: CSSProperties;
@@ -27,7 +33,11 @@ export const Image = ({
   imageWrapperStyle,
   imageStyle,
 }: ImagePropsType) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>(null);
+  const wrapperCallback = useCallback(node => {
+    setWrapperRef(node);
+  }, []);
+
   const [isIntersecting, setIsIntersecting] = useState(false);
   const showImageSkeleton: boolean = isLoading || !isIntersecting;
 
@@ -37,12 +47,12 @@ export const Image = ({
   ) => {
     setIsIntersecting(entry.isIntersecting);
 
-    if (ref.current != null && entry.isIntersecting) {
-      observer.unobserve(ref.current);
+    if (wrapperRef != null && entry.isIntersecting) {
+      observer.unobserve(wrapperRef);
     }
   };
 
-  useIntersectionObserver(ref.current, onIntersection);
+  useIntersectionObserver(wrapperRef, onIntersection);
 
   const {
     handleImageOnLoad,
@@ -51,7 +61,7 @@ export const Image = ({
   }: ImageOnLoadType = useImageOnLoad();
 
   return (
-    <div ref={ref} style={imageWrapperStyle}>
+    <div ref={wrapperCallback} style={imageWrapperStyle}>
       {showImageSkeleton ? (
         <Skeleton
           variant="rect"

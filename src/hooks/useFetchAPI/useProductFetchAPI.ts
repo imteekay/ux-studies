@@ -4,13 +4,18 @@ import { State, FetchActionType } from './types';
 import { fetchReducer } from './reducer';
 import { fakeData } from './fakeData';
 
-const fetchProducts = async () => fakeData;
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+const fetchProducts = async () => {
+  await sleep(500);
+  return fakeData;
+};
 
 export const useProductFetchAPI = (): State => {
   const initialState: State = {
     isLoading: false,
     hasError: false,
-    data: fakeData,
+    data: [],
   };
 
   const [state, dispatch] = useReducer(fetchReducer, initialState);
