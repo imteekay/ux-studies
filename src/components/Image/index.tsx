@@ -8,7 +8,10 @@ import React, {
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import {
+  useIntersectionObserver,
+  IntersectionStatus,
+} from '../../hooks/useIntersectionObserver';
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
@@ -33,26 +36,16 @@ export const Image = ({
   imageWrapperStyle,
   imageStyle,
 }: ImagePropsType) => {
-  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>(null);
+  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
   const wrapperCallback = useCallback(node => {
     setWrapperRef(node);
   }, []);
 
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  const { isIntersecting }: IntersectionStatus = useIntersectionObserver(
+    wrapperRef
+  );
+
   const showImageSkeleton: boolean = isLoading || !isIntersecting;
-
-  const onIntersection = (
-    [entry]: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ) => {
-    setIsIntersecting(entry.isIntersecting);
-
-    if (wrapperRef != null && entry.isIntersecting) {
-      observer.unobserve(wrapperRef);
-    }
-  };
-
-  useIntersectionObserver(wrapperRef, onIntersection);
 
   const {
     handleImageOnLoad,

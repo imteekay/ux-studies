@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-type TargetType = Element | HTMLDivElement | null;
+export type TargetType = Element | HTMLDivElement | undefined;
+export type IntersectionStatus = {
+  isIntersecting: boolean;
+};
 
 const defaultOptions: IntersectionObserverInit = {
   rootMargin: '0px',
@@ -9,13 +12,18 @@ const defaultOptions: IntersectionObserverInit = {
 
 export const useIntersectionObserver = (
   target: TargetType,
-  onIntersect: IntersectionObserverCallback,
   options: IntersectionObserverInit = defaultOptions
-) => {
+): IntersectionStatus => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
   useEffect(() => {
-    if (target == null) {
+    if (!target) {
       return;
     }
+
+    const onIntersect = ([entry]: IntersectionObserverEntry[]) => {
+      setIsIntersecting(entry.isIntersecting);
+    };
 
     const observer: IntersectionObserver = new IntersectionObserver(
       onIntersect,
@@ -28,6 +36,8 @@ export const useIntersectionObserver = (
       observer.unobserve(target);
     };
   }, [target]);
+
+  return { isIntersecting };
 };
 
 export default useIntersectionObserver;
