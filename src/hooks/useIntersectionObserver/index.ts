@@ -23,6 +23,10 @@ export const useIntersectionObserver = (
 
     const onIntersect = ([entry]: IntersectionObserverEntry[]) => {
       setIsIntersecting(entry.isIntersecting);
+
+      if (entry.isIntersecting) {
+        observer.unobserve(target);
+      }
     };
 
     const observer: IntersectionObserver = new IntersectionObserver(
