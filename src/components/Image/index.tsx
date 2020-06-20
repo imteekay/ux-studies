@@ -1,13 +1,22 @@
-import React, { memo, useRef, useState, CSSProperties, Fragment } from 'react';
+import React, {
+  memo,
+  useCallback,
+  useState,
+  CSSProperties,
+  Fragment,
+} from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import {
+  useIntersectionObserver,
+  IntersectionStatus,
+} from '../../hooks/useIntersectionObserver';
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
-type ImageUrlType = Pick<ProductType, 'imageUrl'>;
-type ImageAttrType = { imageAlt: string; width?: string };
+type ImageUrlType = Pick<ProductType, 'imageUrl', 'thumbUrl'>;
+type ImageAttrType = { imageAlt: string; width: string };
 type ImageStateType = { isLoading: boolean };
 type ImageStyleType = {
   imageWrapperStyle: CSSProperties;
@@ -21,28 +30,23 @@ export type ImagePropsType = ImageUrlType &
 
 export const Image = ({
   imageUrl,
+  thumbUrl,
   imageAlt,
   width,
   isLoading,
   imageWrapperStyle,
   imageStyle,
 }: ImagePropsType) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
+  const wrapperCallback = useCallback(node => {
+    setWrapperRef(node);
+  }, []);
+
+  const { isIntersecting }: IntersectionStatus = useIntersectionObserver(
+    wrapperRef
+  );
+
   const showImageSkeleton: boolean = isLoading || !isIntersecting;
-
-  const onIntersection = (
-    [entry]: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ) => {
-    setIsIntersecting(entry.isIntersecting);
-
-    if (ref.current != null && entry.isIntersecting) {
-      observer.unobserve(ref.current);
-    }
-  };
-
-  useIntersectionObserver(ref.current, onIntersection);
 
   const {
     handleImageOnLoad,
@@ -51,7 +55,7 @@ export const Image = ({
   }: ImageOnLoadType = useImageOnLoad();
 
   return (
-    <div ref={ref} style={imageWrapperStyle}>
+    <div ref={wrapperCallback} style={imageWrapperStyle}>
       {showImageSkeleton ? (
         <Skeleton
           variant="rect"
@@ -63,7 +67,7 @@ export const Image = ({
       ) : (
         <Fragment>
           <img
-            src={imageUrl}
+            src={thumbUrl}
             alt={imageAlt}
             width={width}
             style={{ ...imageStyle, ...imageVisibility }}

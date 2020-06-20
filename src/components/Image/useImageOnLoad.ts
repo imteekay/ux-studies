@@ -6,22 +6,19 @@ export type ImageOnLoadType = {
   imageOpactity: CSSProperties;
 };
 
-export const useImageOnLoad = (
-  defaultIsLoaded: boolean = false
-): ImageOnLoadType => {
-  const [isLoaded, setIsLoaded] = useState(defaultIsLoaded);
+export const useImageOnLoad = (): ImageOnLoadType => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const handleImageOnLoad = () => setIsLoaded(true);
 
   const imageVisibility: CSSProperties = {
     visibility: isLoaded ? 'hidden' : 'visible',
-    filter: 'blur(20px)',
-    transform: 'scale(1.1)',
-    transition: 'visibility 0ms ease 400ms',
+    filter: 'blur(10px)',
+    transition: 'visibility 0ms ease-out 500ms',
   };
 
   const imageOpactity: CSSProperties = {
     opacity: isLoaded ? 1 : 0,
-    transition: 'opacity 400ms ease 0ms',
+    transition: 'opacity 500ms ease-in 0ms',
   };
 
   return { handleImageOnLoad, imageVisibility, imageOpactity };

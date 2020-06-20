@@ -13,6 +13,7 @@ export type ProductPropsType = ProductType & {
 
 export const Product = ({
   imageUrl,
+  thumbUrl,
   name,
   description,
   price,
@@ -20,8 +21,13 @@ export const Product = ({
   isShippingFree,
   isLoading,
 }: ProductPropsType) => (
-  <Box>
-    <Image imageUrl={imageUrl} imageAlt={name} isLoading={isLoading} />
+  <Box mb={1}>
+    <Image
+      imageUrl={imageUrl}
+      thumbUrl={thumbUrl}
+      imageAlt={name}
+      isLoading={isLoading}
+    />
     <TitleDescription
       name={name}
       description={description}
