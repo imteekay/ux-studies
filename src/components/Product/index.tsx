@@ -21,7 +21,7 @@ export const Product = ({
   isShippingFree,
   isLoading,
 }: ProductPropsType) => (
-  <Box>
+  <Box mb={1}>
     <Image
       imageUrl={imageUrl}
       thumbUrl={thumbUrl}
