@@ -39,7 +39,7 @@ export const useIntersectionObserver = (
     return () => {
       observer.unobserve(target);
     };
-  }, [target]);
+  }, [target, options]);
 
   return { isIntersecting };
 };
