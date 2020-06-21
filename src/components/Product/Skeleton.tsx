@@ -4,6 +4,7 @@ import Product from './index';
 export const Skeleton = () => (
   <Product
     imageUrl=""
+    thumbUrl=""
     name=""
     description=""
     price={0}

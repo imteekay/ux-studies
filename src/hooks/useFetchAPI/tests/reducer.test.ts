@@ -30,6 +30,7 @@ describe('fetchReducer', () => {
         name: 'iPhone',
         price: 3500,
         imageUrl: 'image-url.png',
+        thumbUrl: 'image-url.png',
         description: 'Apple mobile phone',
         isShippingFree: true,
         discount: 0,

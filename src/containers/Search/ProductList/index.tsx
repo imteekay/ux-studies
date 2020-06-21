@@ -16,8 +16,8 @@ export const ProductList = ({ products, isLoading }: ProductListPropsType) => {
   if (isLoading) {
     return (
       <Grid container spacing={3}>
-        {productsSkeleton.map(_ => (
-          <Grid item xs={6} md={3}>
+        {productsSkeleton.map((_, id) => (
+          <Grid item xs={6} md={3} key={`product-skeleton-grid-${id}`}>
             <ProductSkeleton />
           </Grid>
         ))}
