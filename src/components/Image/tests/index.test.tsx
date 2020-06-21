@@ -3,11 +3,15 @@ import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import { Image, ImagePropsType } from '../index';
 
-type ImageType = Pick<ImagePropsType, 'imageUrl' | 'imageAlt' | 'isLoading'>;
+type ImageType = Pick<
+  ImagePropsType,
+  'imageUrl' | 'thumbUrl' | 'imageAlt' | 'isLoading'
+>;
 
 describe('Image', () => {
   const imageProps: ImageType = {
     imageUrl: 'url.com.br',
+    thumbUrl: 'url.com.br',
     imageAlt: 'the image alt',
     isLoading: false,
   };

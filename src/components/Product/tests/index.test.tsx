@@ -6,6 +6,7 @@ import { Product, ProductPropsType } from '../index';
 describe('Product', () => {
   const product: ProductPropsType = {
     imageUrl: 'url.com.br',
+    thumbUrl: 'url.com.br',
     name: 'The cool product',
     description: 'A cool product',
     price: 100,

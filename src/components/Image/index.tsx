@@ -15,7 +15,7 @@ import {
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
-type ImageUrlType = Pick<ProductType, 'imageUrl', 'thumbUrl'>;
+type ImageUrlType = Pick<ProductType, 'imageUrl' | 'thumbUrl'>;
 type ImageAttrType = { imageAlt: string; width: string };
 type ImageStateType = { isLoading: boolean };
 type ImageStyleType = {
