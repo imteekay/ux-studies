@@ -2,7 +2,6 @@ import React, {
   memo,
   useCallback,
   useState,
-  CSSProperties,
   Fragment,
   FunctionComponent,
 } from 'react';
@@ -19,17 +18,10 @@ import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
 type ImageUrlType = Pick<ProductType, 'imageUrl' | 'thumbUrl'>;
-type ImageAttrType = { imageAlt: string; width: string };
+type ImageAttrType = { imageAlt: string; width?: string };
 type ImageStateType = { isLoading: boolean };
-type ImageStyleType = {
-  imageWrapperStyle: CSSProperties;
-  imageStyle: CSSProperties;
-};
 
-export type ImagePropsType = ImageUrlType &
-  ImageAttrType &
-  ImageStateType &
-  ImageStyleType;
+export type ImagePropsType = ImageUrlType & ImageAttrType & ImageStateType;
 
 export const Image: FunctionComponent<ImagePropsType> = ({
   imageUrl,
@@ -37,8 +29,6 @@ export const Image: FunctionComponent<ImagePropsType> = ({
   imageAlt,
   width,
   isLoading,
-  imageWrapperStyle,
-  imageStyle,
 }) => {
   const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
   const wrapperCallback = useCallback(node => {
@@ -90,8 +80,6 @@ export const Image: FunctionComponent<ImagePropsType> = ({
 
 Image.defaultProps = {
   width: '100%',
-  imageWrapperStyle,
-  imageStyle,
 };
 
 export default memo(Image);

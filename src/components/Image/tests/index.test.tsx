@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import { Image, ImagePropsType } from '../index';
-import { imageWrapperStyle, imageStyle } from '../styles';
 
 describe('Image', () => {
   const imageProps: ImagePropsType = {
@@ -11,8 +10,6 @@ describe('Image', () => {
     imageAlt: 'the image alt',
     isLoading: false,
     width: '200px',
-    imageWrapperStyle,
-    imageStyle,
   };
 
   describe('when the image is loading', () => {
