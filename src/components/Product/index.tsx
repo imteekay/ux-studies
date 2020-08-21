@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
 
 import { ProductType } from 'types/Product';
@@ -11,7 +11,7 @@ export type ProductPropsType = ProductType & {
   isLoading: boolean;
 };
 
-export const Product = ({
+export const Product: FunctionComponent<ProductPropsType> = ({
   imageUrl,
   thumbUrl,
   name,
@@ -20,7 +20,7 @@ export const Product = ({
   discount,
   isShippingFree,
   isLoading,
-}: ProductPropsType) => (
+}) => (
   <Box mb={1}>
     <Image
       imageUrl={imageUrl}

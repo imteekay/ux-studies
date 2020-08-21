@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import { ProductType } from 'types/Product';
@@ -12,7 +12,10 @@ type ProductListPropsType = {
 
 const productsSkeleton = [0, 0, 0, 0, 0, 0, 0, 0];
 
-export const ProductList = ({ products, isLoading }: ProductListPropsType) => {
+export const ProductList: FunctionComponent<ProductListPropsType> = ({
+  products,
+  isLoading,
+}) => {
   if (isLoading) {
     return (
       <Grid container spacing={3}>

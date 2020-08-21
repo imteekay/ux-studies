@@ -2,18 +2,17 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import { Image, ImagePropsType } from '../index';
-
-type ImageType = Pick<
-  ImagePropsType,
-  'imageUrl' | 'thumbUrl' | 'imageAlt' | 'isLoading'
->;
+import { imageWrapperStyle, imageStyle } from '../styles';
 
 describe('Image', () => {
-  const imageProps: ImageType = {
+  const imageProps: ImagePropsType = {
     imageUrl: 'url.com.br',
     thumbUrl: 'url.com.br',
     imageAlt: 'the image alt',
     isLoading: false,
+    width: '200px',
+    imageWrapperStyle,
+    imageStyle,
   };
 
   describe('when the image is loading', () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Typography } from '@material-ui/core';
 
 type DiscountPropsType = {
@@ -6,7 +6,10 @@ type DiscountPropsType = {
   discountOff: string;
 };
 
-export const Discount = ({ hasDiscount, discountOff }: DiscountPropsType) => {
+export const Discount: FunctionComponent<DiscountPropsType> = ({
+  hasDiscount,
+  discountOff,
+}) => {
   if (!hasDiscount) {
     return null;
   }

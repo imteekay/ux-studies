@@ -1,4 +1,10 @@
-import React, { Fragment, useState, MouseEvent } from 'react';
+import React, {
+  Fragment,
+  useState,
+  MouseEvent,
+  FunctionComponent,
+} from 'react';
+
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import MuiMenu from '@material-ui/core/Menu';
@@ -8,7 +14,7 @@ import { MenuItem } from '../../types/MenuItem';
 
 type MenuPropsType = { menuItems: MenuItem[] };
 
-export const Menu = ({ menuItems }: MenuPropsType) => {
+export const Menu: FunctionComponent<MenuPropsType> = ({ menuItems }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {

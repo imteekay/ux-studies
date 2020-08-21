@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Typography from '@material-ui/core/Typography';
 
@@ -10,11 +10,11 @@ type TitleDescriptionPropsType = TitleDescriptionType & {
   isLoading: boolean;
 };
 
-export const TitleDescription = ({
+export const TitleDescription: FunctionComponent<TitleDescriptionPropsType> = ({
   name,
   description,
   isLoading,
-}: TitleDescriptionPropsType) => {
+}) => {
   if (isLoading) {
     return (
       <Fragment>

@@ -4,7 +4,9 @@ import React, {
   useState,
   CSSProperties,
   Fragment,
+  FunctionComponent,
 } from 'react';
+
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
@@ -12,6 +14,7 @@ import {
   useIntersectionObserver,
   IntersectionStatus,
 } from '../../hooks/useIntersectionObserver';
+
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
@@ -28,7 +31,7 @@ export type ImagePropsType = ImageUrlType &
   ImageStateType &
   ImageStyleType;
 
-export const Image = ({
+export const Image: FunctionComponent<ImagePropsType> = ({
   imageUrl,
   thumbUrl,
   imageAlt,
@@ -36,7 +39,7 @@ export const Image = ({
   isLoading,
   imageWrapperStyle,
   imageStyle,
-}: ImagePropsType) => {
+}) => {
   const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
   const wrapperCallback = useCallback(node => {
     setWrapperRef(node);
