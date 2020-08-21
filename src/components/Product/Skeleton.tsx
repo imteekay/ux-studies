@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Product from './index';
 
-export const Skeleton = () => (
+export const Skeleton: FunctionComponent = () => (
   <Product
     imageUrl=""
     thumbUrl=""

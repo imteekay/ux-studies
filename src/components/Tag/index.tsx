@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
 import Skeleton from '@material-ui/lab/Skeleton';
 
@@ -10,7 +10,11 @@ type TagProps = {
   isLoading: boolean;
 };
 
-export const Tag = ({ label, isVisible, isLoading }: TagProps) => {
+export const Tag: FunctionComponent<TagProps> = ({
+  label,
+  isVisible,
+  isLoading,
+}) => {
   if (!isVisible) return null;
   if (isLoading) {
     return (

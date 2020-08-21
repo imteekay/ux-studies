@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Typography } from '@material-ui/core';
 
 import { priceWithDiscountStyle } from '../styles';
@@ -8,7 +8,10 @@ type PricePropsType = {
   price: string;
 };
 
-export const PriceWithDiscount = ({ price, hasDiscount }: PricePropsType) => {
+export const PriceWithDiscount: FunctionComponent<PricePropsType> = ({
+  price,
+  hasDiscount,
+}) => {
   if (!hasDiscount) {
     return null;
   }

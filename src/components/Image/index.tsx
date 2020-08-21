@@ -2,9 +2,10 @@ import React, {
   memo,
   useCallback,
   useState,
-  CSSProperties,
   Fragment,
+  FunctionComponent,
 } from 'react';
+
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
@@ -12,31 +13,23 @@ import {
   useIntersectionObserver,
   IntersectionStatus,
 } from '../../hooks/useIntersectionObserver';
+
 import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './useImageOnLoad';
 
 type ImageUrlType = Pick<ProductType, 'imageUrl' | 'thumbUrl'>;
-type ImageAttrType = { imageAlt: string; width: string };
+type ImageAttrType = { imageAlt: string; width?: string };
 type ImageStateType = { isLoading: boolean };
-type ImageStyleType = {
-  imageWrapperStyle: CSSProperties;
-  imageStyle: CSSProperties;
-};
 
-export type ImagePropsType = ImageUrlType &
-  ImageAttrType &
-  ImageStateType &
-  ImageStyleType;
+export type ImagePropsType = ImageUrlType & ImageAttrType & ImageStateType;
 
-export const Image = ({
+export const Image: FunctionComponent<ImagePropsType> = ({
   imageUrl,
   thumbUrl,
   imageAlt,
   width,
   isLoading,
-  imageWrapperStyle,
-  imageStyle,
-}: ImagePropsType) => {
+}) => {
   const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
   const wrapperCallback = useCallback(node => {
     setWrapperRef(node);
@@ -87,8 +80,6 @@ export const Image = ({
 
 Image.defaultProps = {
   width: '100%',
-  imageWrapperStyle,
-  imageStyle,
 };
 
 export default memo(Image);

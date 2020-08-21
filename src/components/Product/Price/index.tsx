@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { ProductType } from 'types/Product';
@@ -12,7 +12,11 @@ type PricePropsType = PriceType & {
   isLoading: boolean;
 };
 
-export const Price = ({ price, discount, isLoading }: PricePropsType) => {
+export const Price: FunctionComponent<PricePropsType> = ({
+  price,
+  discount,
+  isLoading,
+}) => {
   if (isLoading) {
     return (
       <Skeleton width="80%" height="18px" data-testid="price-skeleton-loader" />
