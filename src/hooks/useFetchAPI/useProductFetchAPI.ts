@@ -2,24 +2,7 @@ import { useEffect, useReducer } from 'react';
 
 import { State, FetchActionType } from './types';
 import { fetchReducer } from './reducer';
-import { fakeData } from './fakeData';
-
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-const fetchProducts = async (category: string) => {
-  await sleep(500);
-
-  switch (category) {
-    case 'all':
-      return fakeData;
-    case 'JavaScript':
-      return [fakeData[0]];
-    case 'TypeScript':
-      return [fakeData[1]];
-    default:
-      return fakeData;
-  }
-};
+import { fetchProducts } from '../../api';
 
 export const useProductFetchAPI = (category: string): State => {
   const initialState: State = {
