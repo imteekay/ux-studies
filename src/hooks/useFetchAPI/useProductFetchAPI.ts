@@ -2,16 +2,9 @@ import { useEffect, useReducer } from 'react';
 
 import { State, FetchActionType } from './types';
 import { fetchReducer } from './reducer';
-import { fakeData } from './fakeData';
+import { fetchProducts } from '../../api';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-const fetchProducts = async () => {
-  await sleep(500);
-  return fakeData;
-};
-
-export const useProductFetchAPI = (): State => {
+export const useProductFetchAPI = (category: string): State => {
   const initialState: State = {
     isLoading: false,
     hasError: false,
@@ -25,7 +18,7 @@ export const useProductFetchAPI = (): State => {
       dispatch({ type: FetchActionType.FETCH_INIT });
 
       try {
-        const payload = await fetchProducts();
+        const payload = await fetchProducts(category);
 
         dispatch({
           type: FetchActionType.FETCH_SUCCESS,
@@ -37,7 +30,7 @@ export const useProductFetchAPI = (): State => {
     };
 
     fetchAPI();
-  }, []);
+  }, [category]);
 
   return state;
 };
