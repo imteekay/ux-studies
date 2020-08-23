@@ -6,12 +6,24 @@ import { fakeData } from './fakeData';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-const fetchProducts = async () => {
+const fetchProducts = async (category: string) => {
   await sleep(500);
-  return fakeData;
+
+  console.log('category', category);
+
+  switch (category) {
+    case 'all':
+      return fakeData;
+    case 'JavaScript':
+      return [fakeData[0]];
+    case 'TypeScript':
+      return [fakeData[1]];
+    default:
+      return fakeData;
+  }
 };
 
-export const useProductFetchAPI = (): State => {
+export const useProductFetchAPI = (category: string): State => {
   const initialState: State = {
     isLoading: false,
     hasError: false,
@@ -25,7 +37,7 @@ export const useProductFetchAPI = (): State => {
       dispatch({ type: FetchActionType.FETCH_INIT });
 
       try {
-        const payload = await fetchProducts();
+        const payload = await fetchProducts(category);
 
         dispatch({
           type: FetchActionType.FETCH_SUCCESS,
@@ -37,7 +49,7 @@ export const useProductFetchAPI = (): State => {
     };
 
     fetchAPI();
-  }, []);
+  }, [category]);
 
   return state;
 };
