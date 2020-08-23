@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useState } from 'react';
-import Button from '@material-ui/core/Button';
+import React, { MouseEvent, FunctionComponent, useState } from 'react';
 
 import { State } from '../../hooks/useFetchAPI/types';
 import { useProductFetchAPI } from '../../hooks/useFetchAPI/useProductFetchAPI';
 import { ProductList } from './ProductList';
+import { Categories } from './Categories';
 
 export const Search: FunctionComponent = () => {
   const [category, setCategory] = useState('all');
@@ -13,14 +13,14 @@ export const Search: FunctionComponent = () => {
     return <h2>Error</h2>;
   }
 
+  const categories = ['all', 'JavaScript', 'TypeScript'];
+  const updateCategory = (category: string) => (_: MouseEvent) => {
+    setCategory(category);
+  };
+
   return (
     <>
-      <div>
-        <Button onClick={() => setCategory('all')}>All</Button>
-        <Button onClick={() => setCategory('JavaScript')}>JavaScript</Button>
-        <Button onClick={() => setCategory('TypeScript')}>TypeScript</Button>
-      </div>
-
+      <Categories categories={categories} handleClick={updateCategory} />
       <ProductList products={data} isLoading={isLoading} />
     </>
   );
