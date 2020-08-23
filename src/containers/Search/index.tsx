@@ -1,22 +1,18 @@
-import React, { MouseEvent, FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import { State } from '../../hooks/useFetchAPI/types';
 import { useProductFetchAPI } from '../../hooks/useFetchAPI/useProductFetchAPI';
+import { useCategory } from '../../hooks/useCategory';
 import { ProductList } from './ProductList';
 import { Categories } from './Categories';
 
 export const Search: FunctionComponent = () => {
-  const [category, setCategory] = useState('all');
+  const { category, updateCategory, categories } = useCategory();
   const { isLoading, hasError, data }: State = useProductFetchAPI(category);
 
   if (hasError) {
     return <h2>Error</h2>;
   }
-
-  const categories = ['all', 'JavaScript', 'TypeScript'];
-  const updateCategory = (category: string) => (_: MouseEvent) => {
-    setCategory(category);
-  };
 
   return (
     <>

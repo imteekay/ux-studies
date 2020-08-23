@@ -9,8 +9,6 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const fetchProducts = async (category: string) => {
   await sleep(500);
 
-  console.log('category', category);
-
   switch (category) {
     case 'all':
       return fakeData;
